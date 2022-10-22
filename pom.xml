@@ -707,7 +707,7 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <reporting>
+    <reporting> 
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
