@@ -99,7 +99,7 @@ public abstract class SignatureECDSA extends SignatureAlgorithmSpi {
 
         try {
             if (provider == null) {
-                String providerId = JCEMapper.getProviderId();
+                Provider providerId = JCEMapper.getProviderId();
                 if (providerId == null) {
                     this.signatureAlgorithm = Signature.getInstance(algorithmID);
 
@@ -111,7 +111,7 @@ public abstract class SignatureECDSA extends SignatureAlgorithmSpi {
                 this.signatureAlgorithm = Signature.getInstance(algorithmID, provider);
             }
 
-        } catch (NoSuchAlgorithmException | NoSuchProviderException ex) {
+        } catch (NoSuchAlgorithmException ex) {
             Object[] exArgs = { algorithmID, ex.getLocalizedMessage() };
             throw new XMLSignatureException("algorithms.NoSuchAlgorithm", exArgs);
         }
