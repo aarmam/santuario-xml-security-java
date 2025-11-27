@@ -384,7 +384,7 @@ public abstract class SignatureBaseRSA extends SignatureAlgorithmSpi {
             try {
                 Signature sig;
                 if (provider == null) {
-                    String providerId = JCEMapper.getProviderId();
+                    Provider providerId = JCEMapper.getProviderId();
                     if (providerId == null) {
                         sig = Signature.getInstance("RSASSA-PSS");
                     } else {
@@ -399,7 +399,7 @@ public abstract class SignatureBaseRSA extends SignatureAlgorithmSpi {
                     throw new NoSuchAlgorithmException("Should not happen", e);
                 }
                 return sig;
-            } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+            } catch (NoSuchAlgorithmException e) {
                 return super.getSignature(provider, algorithmID);
             }
         }
